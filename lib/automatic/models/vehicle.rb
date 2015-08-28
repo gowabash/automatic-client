@@ -88,6 +88,35 @@ module Automatic
       def display_name
         @attributes.fetch('display_name', nil)
       end
+
+      # Returns the fuel level percent of the vehicle
+      #
+      # @return [Float]
+      def fuel_level_percent
+        @attributes.fetch('fuel_level_percent', 0).to_f
+      end
+
+      # Returns the timestamp of when this vehicle was created
+      #
+      # @return [DateTime]
+      def created_at
+        begin
+          DateTime.parse(@attributes['created_at'])
+        rescue
+          nil
+        end
+      end
+      p
+      # Returns the timestamp of when this vehicle was last updated
+      #
+      # @return [DateTime]
+      def updated_at
+        begin
+          DateTime.parse(@attributes['updated_at'])
+        rescue
+          nil
+        end
+      end
     end
   end
 end
