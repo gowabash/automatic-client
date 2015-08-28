@@ -55,7 +55,7 @@
   },
   {
     "name": "User Trips",
-    "path": "/user/{id}/trip/{?page,limit}",
+    "path": "/user/{id}/trip/{?page,limit,started_at__lte,started_at__gte,ended_at__lte,ended_at__gte,vehicle,tags__in}",
     "rel": "user-trips",
     "templated": true
   },
