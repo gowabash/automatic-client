@@ -360,6 +360,20 @@ module Automatic
         @attributes.fetch('average_kmpl', 0).to_f
       end
 
+      # Returns the EPA average in kilometers per liter
+      #
+      # @return [Float]
+      def average_from_epa_kmpl
+        @attributes.fetch('average_from_epa_kmpl', 0).to_f
+      end
+
+      # Returns the EPA average in miles per gallon
+      #
+      # @return [Float]
+      def average_from_epa_mpg
+        (self.average_from_epa_kmpl * 0.264172).to_f
+      end
+
       # Returns the average miles per gallon
       #
       # @return [Float]
@@ -367,6 +381,27 @@ module Automatic
         val = self.average_kmpl
         val = (val * 2.35214583)
         ("%.1f" % [val]).to_f
+      end
+
+      # Returns the fraction of drive time in the city
+      #
+      # @return [Float]
+      def city_fraction
+        @attributes.fetch('city_fraction', 0).to_f
+      end
+
+      # Returns the fraction of drive time on the highway
+      #
+      # @return [Float]
+      def highway_fraction
+        @attributes.fetch('highway_fraction', 0).to_f
+      end
+
+      # Returns the fraction of drive time at night
+      #
+      # @return [Float]
+      def night_driving_fraction
+        @attributes.fetch('night_driving_fraction', 0).to_f
       end
 
       # Returns the amount of time the vehicle was idling
