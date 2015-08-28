@@ -154,8 +154,28 @@ describe Automatic::Models::Trip do
       expect(subject.average_kmpl).to eq(16.56434586845349)
     end
 
+    it "returns the #average_from_epa_kmpl" do
+      expect(subject.average_from_epa_kmpl).to eq(7.8)
+    end
+
+    it "returns the #average_from_epa_mpg" do
+      expect(subject.average_from_epa_mpg).to eq(2.0605416)
+    end
+
     it "returns the #average_mpg" do
       expect(subject.average_mpg).to eq(39.0)
+    end
+
+    it "returns the #city_fraction" do
+      expect(subject.city_fraction).to eq(1.0)
+    end
+
+    it "returns the #highway_fraction" do
+      expect(subject.highway_fraction).to eq(0.0)
+    end
+
+    it "returns the #night_driving_fraction" do
+      expect(subject.night_driving_fraction).to eq(0.0)
     end
 
     context "event counter cache" do

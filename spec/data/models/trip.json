@@ -49,6 +49,10 @@
   "fuel_cost_usd": 1.0428111627932486,
   "fuel_volume_l": 0.2465857561582522,
   "average_kmpl": 16.56434586845349,
+  "average_from_epa_kmpl": 7.8,
+  "city_fraction": 1.0,
+  "highway_fraction": 0.0,
+  "night_driving_fraction": 0.0,
   "idling_time_s": 430,
   "tags": [
     "business"
