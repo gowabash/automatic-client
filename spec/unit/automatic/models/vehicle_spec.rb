@@ -51,5 +51,19 @@ describe Automatic::Models::Vehicle do
     it "returns the #display_name" do
       expect(subject.display_name).to eq('My Speed Demon')
     end
+
+    it "returns the #fuel_level_percent" do
+      expect(subject.fuel_level_percent).to eq(83.52)
+    end
+
+    it "returns the #created_at timestamp" do
+      expected = DateTime.parse("2015-08-06T00:21:16.649800Z")
+      expect(subject.created_at).to eq(expected)
+    end
+
+    it "returns the #updated_at timestamp" do
+      expected = DateTime.parse("2015-08-06T00:21:18.988534Z")
+      expect(subject.updated_at).to eq(expected)
+    end
   end
 end
