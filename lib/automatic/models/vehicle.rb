@@ -96,6 +96,13 @@ module Automatic
         @attributes.fetch('fuel_level_percent', 0).to_f
       end
 
+      # Returns the current battery voltage
+      #
+      # @return [Float]
+      def battery_voltage
+        @attributes.fetch('battery_voltage', 0).to_f
+      end
+
       # Returns the timestamp of when this vehicle was created
       #
       # @return [DateTime]
