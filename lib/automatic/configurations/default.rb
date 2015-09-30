@@ -86,21 +86,21 @@ module Automatic
       #
       # @return [Logger] Log to STDOUT
       def self.cache_logger
-        Logger.new(STDOUT)
+        Logger.new(ENV["AUTOMATIC_CACHE_LOGGER"].nil? ? STDOUT : ENV["AUTOMATIC_CACHE_LOGGER"])
       end
 
       # Returns the default HTTP request logger
       #
       # @return [Logger] Log to STDOUT
       def self.request_logger
-        Logger.new(STDOUT)
+        Logger.new((ENV["AUTOMATIC_REQUEST_LOGGER"].nil?) ? STDOUT : ENV["AUTOMATIC_REQUEST_LOGGER"])
       end
 
       # Return the default Gem Application Logger
       #
       # @return [Logger] Log to STDOUT
       def self.application_logger
-        Logger.new(STDOUT)
+        Logger.new(ENV["AUTOMATIC_APP_LOGGER"].nil? ? STDOUT : ENV["AUTOMATIC_APP_LOGGER"])
       end
 
       # Return the default middleware stack

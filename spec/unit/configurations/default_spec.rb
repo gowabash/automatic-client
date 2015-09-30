@@ -12,8 +12,8 @@ describe Automatic::Configurations::Default do
       ENV.stub(:[]).with('AUTOMATIC_MEDIA_TYPE').and_return('text/csv')
       ENV.stub(:[]).with('AUTOMATIC_CONTENT_TYPE').and_return('text/csv')
       ENV.stub(:[]).with('AUTOMATIC_AUTO_PAGINATE').and_return('false')
-      ENV.stub(:[]).with('AUTOMATIC_REQUEST_LOGGER').and_return(Logger.new(STDOUT))
-      ENV.stub(:[]).with('AUTOMATIC_CACHE_LOGGER').and_return(Logger.new(STDOUT))
+      ENV.stub(:[]).with('AUTOMATIC_REQUEST_LOGGER').and_return("./log/test_request.log")
+      ENV.stub(:[]).with('AUTOMATIC_CACHE_LOGGER').and_return("./log/test_request.log")
       ENV.stub(:[]).with('AUTOMATIC_USER_AGENT').and_return('TestAgent')
     end
 
