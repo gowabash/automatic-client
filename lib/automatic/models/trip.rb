@@ -35,24 +35,24 @@ module Automatic
         @attributes.fetch('url', nil)
       end
 
-      # Returns the URL of the vehicle
+      # Returns the vehicle
       #
-      # @todo return a Uri wrapped object
-      # @todo ensure this is the vehicle object
-      #
-      # @return [String] Vehicle URL
+      # @return [Vehicle] Vehicle model
       def vehicle
-        @attributes.fetch('vehicle', nil)
+        return nil unless @attributes["vehicle"]
+        return @vehicle if @vehicle
+        request = Automatic::Client.get(@attributes["vehicle"])
+        @vehicle = Automatic::Models::Vehicle.new(request.body)
       end
 
-      # Returns the URL of the user
+      # Returns the user
       #
-      # @todo return a Uri wrapped object
-      # @todo ensure this is the user object
-      #
-      # @return [String] User URL
+      # @return [User] User model
       def user
-        @attributes.fetch('user', nil)
+        return nil unless @attributes["user"]
+        return @user if @user
+        request = Automatic::Client.get(@attributes["user"])
+        @user = Automatic::Models::User.new(request.body)
       end
 
       # Returns a Location model for the end location

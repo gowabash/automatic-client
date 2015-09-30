@@ -8,6 +8,7 @@ module Automatic
       # @return [Automatic::Models::User]
       def initialize(attributes={})
         @attributes = attributes
+        @attributes = JSON.parse(@attributes) if @attributes.is_a? String
       end
 
       # Returns the ID of the User

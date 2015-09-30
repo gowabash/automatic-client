@@ -6,8 +6,9 @@ module Automatic
       # @param attributes [Hash] Hash of the Vehicle Definition
       #
       # @return [Automatic::Models::Vehicle]
-      def initialize(attributes={})
+      def initialize(attributes = {})
         @attributes = attributes
+        @attributes = JSON.parse(@attributes) if @attributes.is_a? String
       end
 
       # Returns the ID of the Vehicle

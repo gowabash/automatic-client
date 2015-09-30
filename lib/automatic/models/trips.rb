@@ -253,8 +253,8 @@ module Automatic
       # Method needed for Enumerable support
       #
       # @return [Array, Trips] A collection of Trip objects
-      def each(&block)
-        internal_collection.each(&block)
+      def each
+        @collection.each { |e| yield(Trip.new(e)) }
       end
 
       # Out of this collection, find all trips with a Tagging

@@ -1,6 +1,39 @@
 require 'spec_helper'
 
 describe Automatic::Models::Trip do
+  before(:each) do
+    vehicle_response = '{
+      "url" : "https://api.automatic.com/vehicle/C_3243445654645/",
+      "id" : "C_3243445654645",
+      "created_at" : "2015-09-25T02:59:54.788000Z",
+      "updated_at" : "2015-09-30T11:39:43.042000Z",
+      "make" : "MINI",
+      "model" : "Cooper Convertible",
+      "year" : 2014,
+      "submodel" : "",
+      "color" : "",
+      "display_name" : "Otis",
+      "fuel_level_percent" : 40.11,
+      "battery_voltage" : 13.0,
+      "device" : ""
+    }'
+    stub_request(:get, "https://api.automatic.com/vehicle/C_3243445654645/").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Bearer', 'Content-Type'=>'application/json', 'User-Agent'=>'Automatic Ruby Gem 1.3.0'}).
+      to_return(:status => 200, :body => vehicle_response, :headers => {})
+
+      user_response = '{
+        "id" : "U_346534245654",
+        "url" : "https://api.automatic.com/user/U_346534245654/",
+        "username" : "gowabash@gmail.com",
+        "first_name" : "Matt",
+        "last_name" : "Brown",
+        "email" : "gowabash@gmail.com"
+      }'
+    stub_request(:get, "https://api.automatic.com/user/U_346534245654/").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip,deflate', 'Authorization'=>'Bearer', 'Content-Type'=>'application/json', 'User-Agent'=>'Automatic Ruby Gem 1.3.0'}).
+      to_return(:status => 200, :body => user_response, :headers => {})
+  end
+
   let(:trip_file) do
     File.read(File.expand_path('../../../../data/models/trip.json', __FILE__))
   end
@@ -64,11 +97,11 @@ describe Automatic::Models::Trip do
     end
 
     it "returns the URL for the #vehicle" do
-      expect(subject.vehicle).to eq("https://api.automatic.com/vehicle/C_3243445654645/")
+      expect(subject.vehicle.url).to eq("https://api.automatic.com/vehicle/C_3243445654645/")
     end
 
     it "returns the URL for the #user" do
-      expect(subject.user).to eq("https://api.automatic.com/user/U_346534245654/")
+      expect(subject.user.url).to eq("https://api.automatic.com/user/U_346534245654/")
     end
 
     it "returns the #url" do
