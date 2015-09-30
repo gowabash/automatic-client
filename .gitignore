@@ -23,4 +23,4 @@ tmp
 /.ruby-gemset
 .DS_Store
 
-/log
+/log/*
